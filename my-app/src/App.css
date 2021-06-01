@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+body {
+  height: 100%;
+}
+
+.background {
+  /* The image used */
+  background-image: url("Background.jpg");
+
+  /* Full height */
+  height: 940px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.button{
+  background-color: yellow;
+
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+#left{
+  width:165px;
+  }
+  
+  #left h1{
+  background:#99CC00;
+  color:#FFFFFF;
+  font-size:14px;
+  text-align:center;
+  }
+  
+  #left ul{
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  }
+  
+  #left ul a{
+  text-decoration:none;
+  line-height:25px;
+  color:#333333;
+  background:#EEEEEE;
+  display:block;
+  width:150px;
+  border-top:1px solid #FFFFFF;
+  border-bottom:1px solid #CCCCCC;
+  padding-left:15px;
+  }
+  
+  #left ul a:hover{
+  background:#FFCC99;
+  }
+
+  .fontLogo{
+    margin-left: 20px;
+    font-style: initial;
+    font-weight: bold;
+    font-family: 'Roboto';
+}
+.mynft{
+
+  
+}
