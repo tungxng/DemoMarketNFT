@@ -219,8 +219,6 @@ class Market extends Component {
                           <button className="btn btn-sm btn-primary float-right m-t-n-xs" type="submit"style={{marginRight:'10px'}}><strong>Buy</strong></button>
                         </form>
                       </div>
-
-
                       <div className="col-sm-4 b-r"><h3 className="m-t-none m-b">Get NFT</h3>
                         <p>Sign in today for more expirience.</p>
 
@@ -237,6 +235,87 @@ class Market extends Component {
               </div>
             </div>
           </div>
+          <div>
+          <div className="wrapper wrapper-content animated fadeInRight">
+  <div className="row">
+    <div className="col-lg-3">
+      <div className="contact-box center-version">
+        <a href="#">
+          <img alt="image" className="rounded-circle" src="img/a2.jpg" />
+          <h3 className="m-b-xs"><strong>NAME</strong></h3>
+          <div className="font-bold">NFT</div>
+          <address className="m-t-md">
+            <strong>Price: 50 ERC</strong><br />
+            description<br />
+          </address>
+        </a>
+        <div className="contact-box-footer">
+          <div className="m-t-xs btn-group">
+            <a href className="btn btn-sm btn-primary float-right m-t-n-xs">BUY NFT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="col-lg-3">
+      <div className="contact-box center-version">
+        <a href="#">
+          <img alt="image" className="rounded-circle" src="img/a1.jpg" />
+          <h3 className="m-b-xs"><strong>NAME</strong></h3>
+          <div className="font-bold">NFT</div>
+          <address className="m-t-md">
+            <strong>Price: 10 ERC</strong><br />
+            description<br />
+          </address>
+        </a>
+        <div className="contact-box-footer">
+          <div className="m-t-xs btn-group">
+            <a href className="btn btn-sm btn-primary float-right m-t-n-xs">BUY NFT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="col-lg-3">
+      <div className="contact-box center-version">
+        <a href="#">
+          <img alt="image" className="rounded-circle" src="img/a3.jpg" />
+          <h3 className="m-b-xs"><strong>Name</strong></h3>
+          <div className="font-bold">NFT</div>
+          <address className="m-t-md">
+            <strong>Price: 30 ERC</strong><br />
+            description<br />
+          </address>
+        </a>
+        <div className="contact-box-footer">
+          <div className="m-t-xs btn-group">
+            <a href className="btn btn-sm btn-primary float-right m-t-n-xs">BUY NFT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="col-lg-3">
+      <div className="contact-box center-version">
+        <a href="#">
+          <img alt="image" className="rounded-circle" src="img/a4.jpg" />
+          <h3 className="m-b-xs"><strong>NAME</strong></h3>
+          <div className="font-bold">NFT</div>
+          <address className="m-t-md">
+            <strong>Price: 20 ERC</strong><br />
+            description<br />
+          </address>
+        </a>
+        <div className="contact-box-footer">
+          <div className="m-t-xs btn-group">
+            <a href className="btn btn-sm btn-primary float-right m-t-n-xs">BUY NFT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+
+
         </div>
       </div>
 

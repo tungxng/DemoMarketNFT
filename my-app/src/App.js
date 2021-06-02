@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import MyNFT from './contracts/MyNFT.json'
+import ERC20Token from './contracts/TokenFactory.json'
 import Web3 from 'web3';
 import { Route, Link } from "react-router-dom";
 import NavBar from "./NavBar";
@@ -59,6 +60,18 @@ class App extends Component {
     } else {
       window.alert('MyNFT contract not deployed to detected network.')
     }
+    // Load ERCToken
+    const ERC20TokenData = ERC20Token.networks[networkId]
+    if (ERC20TokenData) {
+        const erc20Token = new web3.eth.Contract(ERC20Token.abi, ERC20TokenData.address)
+        this.setState({ erc20Token: erc20Token })
+        let erc20TokenBalance = await erc20Token.methods.balanceOf(this.state.account).call()
+        let systemInfo = await erc20Token.methods.systemInfo().call()
+        this.setState({ erc20TokenBalance: erc20TokenBalance.toString(), systemInfo: systemInfo })
+    } else {
+        window.alert('ERC20Token contract not deployed to detected network.')
+    }
+
     this.setState({ loading: false })
   }
   render() {
@@ -72,8 +85,7 @@ class App extends Component {
                   <img alt="image" className="rounded-circle" src="img/profile_small.jpg" />
                     <h4 className="block m-t-xs font-bold">David Williams</h4>
                     <h4>{this.state.myNFTBalance} NFT </h4>
-                    <h4>{(this.state.erc20TokenBalance)} EC</h4> 
-                </div>
+                    <h3>{window.web3.utils.fromWei(this.state.erc20TokenBalance)} EC</h3>                </div>
                 <div className="logo-element">
                   IN+
               </div>

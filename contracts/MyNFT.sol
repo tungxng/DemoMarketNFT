@@ -7,13 +7,11 @@ contract MyNFT is ERC721URIStorage {
     mapping (uint =>TokenInfo) public forSale ;
     event Mint(address recipient, uint tokenId);
     constructor() ERC721("MyNFT", "NFT") {}
-    
-    mapping(address => uint[]) listIdOfOwner;
-    uint[] public listIdSale;
+    uint[] public listIdNFT;
 
     struct TokenInfo {
         uint price;
-        bool sale;
+        bool status;
     }
     
     // Create NFT
@@ -21,48 +19,27 @@ contract MyNFT is ERC721URIStorage {
     {
         _safeMint(msg.sender, _idToken);
         _setTokenURI(_idToken, tokenURI);
-        listIdOfOwner[msg.sender].push(_idToken);
+        listIdNFT.push(_idToken);
         emit Mint(msg.sender, _idToken);
         return _idToken;
     }
     
-    function getListIdOfOwner(address owner) public view returns(uint[] memory) {
-        return listIdOfOwner[owner];
+    function getListIdNFT() public view returns(uint[] memory) {
+        return listIdNFT;
     }
     
-    function addListIdOfOwner(uint _idToken, address owner) public {
-        listIdOfOwner[owner].push(_idToken);
-    }
-    
-    function removeListIdOfOwner(uint _idToken, address owner) public {
-        for (uint i=0; i < listIdOfOwner[owner].length; i++) {
-            if (listIdOfOwner[owner][i] == _idToken) {
-                listIdOfOwner[owner][i] = listIdOfOwner[owner][listIdOfOwner[owner].length - 1];
-                listIdOfOwner[owner].pop();
+    function removeListNFT(uint _tokenId) private {
+        for (uint i = 0; i < listIdNFT.length; i++) {
+            if (listIdNFT[i] == _tokenId) {
+                listIdNFT[i] = listIdNFT[listIdNFT.length - 1];
+                listIdNFT.pop();
             }
         }
     }
     
-     function getListIdSale() public view returns(uint[] memory) {
-        return listIdSale;
-    }
-    
-    function addListIdSale(uint _tokenId) public {
-        return listIdSale.push(_tokenId);
-    }
-    
-    function removeListIdSale(uint _tokenId) public {
-        for (uint i = 0; i < listIdSale.length; i++) {
-            if (listIdSale[i] == _tokenId) {
-                listIdSale[i] = listIdSale[listIdSale.length - 1];
-                listIdSale.pop();
-            }
-        }
-    }
-    
-    function setStatus(uint _tokenID, uint _price, bool _sale) public{
+    function setStatus(uint _tokenID, uint _price, bool _status) public{
         forSale[_tokenID].price = _price;
-        forSale[_tokenID].sale = _sale;
+        forSale[_tokenID].status = _status;
     }
     
 
@@ -70,15 +47,15 @@ contract MyNFT is ERC721URIStorage {
     function unSale(uint _idToken) public{
         setStatus(_idToken, 0, false);
         approve(address(0),_idToken);
-        removeListIdSale(_idToken);
         
     }
 
     //delete token
-    function deleteToken(uint _tokenId) public  {
+    function deleteNFT(uint _tokenId) public  {
         require (_exists(_tokenId) , "Token is not exist !");
         require (ownerOf(_tokenId) == msg.sender ,  "Token is not owned !" );
         _burn(_tokenId);
+        removeListNFT(_tokenId);
     }
     //Check exists of token
     function exists(uint _tokenId) public view returns (bool) {

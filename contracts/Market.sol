@@ -43,7 +43,6 @@ contract  Marketplace is Ownable{
         require(callContractMyNFT().exists(_tokenId), " Token is not exists !");
         require(callContractMyNFT().ownerOf(_tokenId) == msg.sender, " Token is not owned ! ");
         callContractMyNFT().setStatus(_tokenId, _price ,true);
-        callContractMyNFT().addListIdSale(_tokenId);
         emit Saler(msg.sender,_tokenId, _price);
     }
     
@@ -58,9 +57,6 @@ contract  Marketplace is Ownable{
         callContractERC20().transferFrom(msg.sender, owner, price);
         callContractMyNFT().safeTransferFrom(callContractMyNFT().ownerOf(_tokenId), msg.sender, _tokenId);
         callContractMyNFT().setStatus(_tokenId, 0, false);
-        callContractMyNFT().removeListIdOfOwner(_tokenId, callContractMyNFT().ownerOf(_tokenId));
-        callContractMyNFT().addListIdOfOwner(_tokenId, msg.sender);
-        callContractMyNFT().removeListIdSale(_tokenId);
         emit Buyer(msg.sender ,_tokenId, price);
     }
-}
+}   

@@ -13,6 +13,7 @@ contract TokenFactory is ERC20, Ownable{
     address private ownerAddress;
     uint256 private remaingToken;
     uint256 private soldToken = 0;
+    
 
     function testbalance() public view returns(uint256){
         return address(this).balance;
